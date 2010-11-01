@@ -131,10 +131,6 @@
 		A4B664FF106D051D009BA1DB /* imi_option_event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imi_option_event.h; path = "../../src/ime-core/imi_option_event.h"; sourceTree = SOURCE_ROOT; };
 		A4B66500106D051D009BA1DB /* imi_option_keys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imi_option_keys.h; path = "../../src/ime-core/imi_option_keys.h"; sourceTree = SOURCE_ROOT; };
 		A4B8E1B20F645B870094E08B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
-		A4DA4E430DBDD9D600472176 /* beos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beos.h; sourceTree = "<group>"; };
-		A4DA4E450DBDD9D600472176 /* linux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = linux.h; sourceTree = "<group>"; };
-		A4DA4E460DBDD9D600472176 /* mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mac.h; sourceTree = "<group>"; };
-		A4DA4E470DBDD9D600472176 /* solaris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = solaris.h; sourceTree = "<group>"; };
 		A4DA4E620DBDD9D600472176 /* pytrie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pytrie.cpp; sourceTree = "<group>"; };
 		A4DA4E630DBDD9D600472176 /* pytrie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pytrie.h; sourceTree = "<group>"; };
 		A4DA4E640DBDD9D600472176 /* portability.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = portability.cpp; sourceTree = "<group>"; };
@@ -317,7 +313,6 @@
 			children = (
 				A4DA4E640DBDD9D600472176 /* portability.cpp */,
 				A4DA4E650DBDD9D600472176 /* portability.h */,
-				A4DA4E420DBDD9D600472176 /* config */,
 				A47C4864105E86A2006D528B /* ime-core */,
 				A47C4889105E86C5006D528B /* pinyin */,
 				A4DA4E610DBDD9D600472176 /* lexicon */,
@@ -325,17 +320,6 @@
 			);
 			name = "sunpinyin-2.0";
 			path = ../../src;
-			sourceTree = "<group>";
-		};
-		A4DA4E420DBDD9D600472176 /* config */ = {
-			isa = PBXGroup;
-			children = (
-				A4DA4E430DBDD9D600472176 /* beos.h */,
-				A4DA4E450DBDD9D600472176 /* linux.h */,
-				A4DA4E460DBDD9D600472176 /* mac.h */,
-				A4DA4E470DBDD9D600472176 /* solaris.h */,
-			);
-			path = config;
 			sourceTree = "<group>";
 		};
 		A4DA4E610DBDD9D600472176 /* lexicon */ = {
@@ -386,6 +370,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SunPinyin" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -513,7 +498,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		A4D8BB470DDD72680079ECF3 /* Release-ppc */ = {
+		07F237F5127EC46400180474 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Release";
@@ -527,25 +512,23 @@
 				PREBINDING = NO;
 				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
-			name = "Release-ppc";
+			name = Release;
 		};
-		A4D8BB480DDD72680079ECF3 /* Release-ppc */ = {
+		07F237F6127EC46400180474 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = ppc;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
+				INSTALL_PATH = "\"$(LOCAL_LIBRARY_DIR)/Input Methods\"";
 				OTHER_CPLUSPLUSFLAGS = (
-					"-DLEOPARD",
 					"-DHAVE_CONFIG_H",
 					"$(OTHER_CPLUSPLUSFLAGS_QUOTED_FOR_TARGET_1)",
 					"$(OTHER_CPLUSPLUSFLAGS_QUOTED_FOR_TARGET_2)",
@@ -558,27 +541,25 @@
 				PRODUCT_NAME = SunPinyin;
 				WRAPPER_EXTENSION = app;
 			};
-			name = "Release-ppc";
+			name = Release;
 		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "\"$(LOCAL_LIBRARY_DIR)/Input Methods/\"";
+				INSTALL_PATH = "\"$(LOCAL_LIBRARY_DIR)/Input Methods\"";
 				OTHER_CPLUSPLUSFLAGS = (
-					"-DLEOPARD",
 					"-DHAVE_CONFIG_H",
 					"$(OTHER_CPLUSPLUSFLAGS_QUOTED_FOR_TARGET_1)",
 					"$(OTHER_CPLUSPLUSFLAGS_QUOTED_FOR_TARGET_2)",
@@ -590,40 +571,8 @@
 				);
 				PRODUCT_NAME = SunPinyin;
 				WRAPPER_EXTENSION = app;
-				ZERO_LINK = YES;
 			};
 			name = Debug;
-		};
-		C01FCF4C08A954540054247B /* Release-i386 */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = i386;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/Frameworks\"";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DLEOPARD",
-					"-DHAVE_CONFIG_H",
-					"$(OTHER_CPLUSPLUSFLAGS_QUOTED_FOR_TARGET_1)",
-					"$(OTHER_CPLUSPLUSFLAGS_QUOTED_FOR_TARGET_2)",
-				);
-				OTHER_CPLUSPLUSFLAGS_QUOTED_FOR_TARGET_1 = "-DSUNPINYIN_DATA_DIR=\\\"/Library/Input\\ Methods/SunPinyin.app/Contents/Resources\\\"";
-				OTHER_LDFLAGS = (
-					"-lsqlite3",
-					"-liconv",
-				);
-				PRODUCT_NAME = SunPinyin;
-				WRAPPER_EXTENSION = app;
-			};
-			name = "Release-i386";
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -640,22 +589,6 @@
 			};
 			name = Debug;
 		};
-		C01FCF5008A954540054247B /* Release-i386 */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Release";
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					../../cmakebuild,
-					../..,
-					../../src,
-				);
-				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
-			};
-			name = "Release-i386";
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -663,21 +596,19 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
-				C01FCF4C08A954540054247B /* Release-i386 */,
-				A4D8BB480DDD72680079ECF3 /* Release-ppc */,
+				07F237F6127EC46400180474 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Release-i386";
+			defaultConfigurationName = Release;
 		};
 		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SunPinyin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
-				C01FCF5008A954540054247B /* Release-i386 */,
-				A4D8BB470DDD72680079ECF3 /* Release-ppc */,
+				07F237F5127EC46400180474 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Release-i386";
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
